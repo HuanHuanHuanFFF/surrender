@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="dateSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <!--在此配置MySQL信息-->
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/surrender?serverTimezone=UTC"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>
+
+    <bean id="runner" class="org.apache.commons.dbutils.QueryRunner">
+        <constructor-arg name="ds" ref="dateSource"></constructor-arg>
+    </bean>
+
+    <bean id="userDao" class="com.hf.dao.impl.UserDaoImpl">
+        <property name="runner" ref="runner"></property>
+    </bean>
+
+    <bean id="userService" class="com.hf.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+
+    <bean id="user" class="com.hf.pojo.User" destroy-method="destroy" scope="prototype">
+        <property name="time">
+            <bean class="com.hf.utlis.TimeUtils" factory-method="getCurrentTime"></bean>
+        </property>
+    </bean>
+</beans>
