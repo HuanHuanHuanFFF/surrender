@@ -5,6 +5,7 @@ import com.hf.pojo.User;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
+import org.omg.CORBA.UserException;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -55,13 +56,15 @@ public class UserDaoImpl implements UserDao {
         String sql = "SELECT id,name,time FROM surrender WHERE id = ? ";
         try {
             return runner.query(sql, rs -> {
-                User user = new User();
                 if (rs.next()) {
+                    User user = new User();
                     user.setId(rs.getString("id"));
                     user.setName(rs.getString("name"));
                     user.setTime(new Date(rs.getTimestamp("time").getTime()));
+                    return user;
+                } else {
+                    return null;
                 }
-                return user;
             }, id);
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -1,3 +1,4 @@
+/*
 package com.hf;
 
 import com.hf.dao.UserDao;
@@ -52,4 +53,4 @@ public class TestA {
         UserService userService = (UserService) context.getBean("userService");
         System.out.println(userService.queryUserById("G1TZZ7-668K"));
     }
-}
+}*/

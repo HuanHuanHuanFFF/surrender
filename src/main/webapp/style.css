@@ -1,0 +1,53 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, rgb(255, 166, 236), #3ccfd7); /* 渐变背景 */
+    color: white; /* 设置字体颜色，与背景形成对比 */
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    margin: 12px;
+}
+
+p {
+    text-align: center;
+    margin: 12px 0;
+    min-height: 26px;
+    font-size: 20px;
+}
+
+#show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input {
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+#surrender {
+    margin-top: 10px;
+}

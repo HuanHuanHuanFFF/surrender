@@ -45,7 +45,7 @@ public class User implements DisposableBean {
 
     @Override
     public void destroy() throws Exception {
-        System.out.println(TimeUtils.dateFormat(new Date()) + "user{" + id + "," + name + "," + time
+        System.out.println(TimeUtils.dateFormat(new Date()) + ":user{" + id + "," + name + "," + time
                 + "}saved to MySQL and destroyed");
     }
 }
